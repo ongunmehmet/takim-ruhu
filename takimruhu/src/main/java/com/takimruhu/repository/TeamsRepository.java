@@ -1,7 +1,6 @@
 package com.takimruhu.repository;
 
-import com.takimruhu.entities.Season;
-import com.takimruhu.entities.Teams;
+import com.takimruhu.dto.entities.Teams;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

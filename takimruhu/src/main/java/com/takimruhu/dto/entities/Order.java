@@ -1,4 +1,4 @@
-package com.takimruhu.entities;
+package com.takimruhu.dto.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

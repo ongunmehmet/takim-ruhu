@@ -1,6 +1,5 @@
-package com.takimruhu.entities;
+package com.takimruhu.dto.entities;
 
-import org.hibernate.annotations.Table;
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 

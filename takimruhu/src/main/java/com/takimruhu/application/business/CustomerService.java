@@ -3,7 +3,7 @@ package com.takimruhu.application.business;
 import java.util.List;
 import java.util.Optional;
 
-import com.takimruhu.entities.Customer;
+import com.takimruhu.dto.entities.Customer;
 import com.takimruhu.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 

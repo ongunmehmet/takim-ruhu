@@ -1,15 +1,14 @@
 package com.takimruhu.application.business;
 
 import com.takimruhu.application.OrderApplication;
-import com.takimruhu.dto.request.AddOrderRequest;
-import com.takimruhu.dto.request.UpdateOrderRequest;
-import com.takimruhu.dto.response.AddOrderResponse;
-import com.takimruhu.dto.response.DeleteOrderResponse;
-import com.takimruhu.dto.response.DetailedOrderResponse;
-import com.takimruhu.dto.response.UpdateOrderResponse;
+import com.takimruhu.dto.request.orderrequest.AddOrderRequest;
+import com.takimruhu.dto.request.orderrequest.UpdateOrderRequest;
+import com.takimruhu.dto.response.orderresponse.AddOrderResponse;
+import com.takimruhu.dto.response.orderresponse.DeleteOrderResponse;
+import com.takimruhu.dto.response.orderresponse.DetailedOrderResponse;
+import com.takimruhu.dto.response.orderresponse.UpdateOrderResponse;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.Order;
 @Service
 public class StandardOrderApplication implements OrderApplication {
     @Override

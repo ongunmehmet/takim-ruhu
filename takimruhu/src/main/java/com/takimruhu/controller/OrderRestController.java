@@ -1,12 +1,12 @@
 package com.takimruhu.controller;
 
 import com.takimruhu.application.OrderApplication;
-import com.takimruhu.dto.request.AddOrderRequest;
-import com.takimruhu.dto.request.UpdateOrderRequest;
-import com.takimruhu.dto.response.AddOrderResponse;
-import com.takimruhu.dto.response.DeleteOrderResponse;
-import com.takimruhu.dto.response.DetailedOrderResponse;
-import com.takimruhu.dto.response.UpdateOrderResponse;
+import com.takimruhu.dto.request.orderrequest.AddOrderRequest;
+import com.takimruhu.dto.request.orderrequest.UpdateOrderRequest;
+import com.takimruhu.dto.response.orderresponse.AddOrderResponse;
+import com.takimruhu.dto.response.orderresponse.DeleteOrderResponse;
+import com.takimruhu.dto.response.orderresponse.DetailedOrderResponse;
+import com.takimruhu.dto.response.orderresponse.UpdateOrderResponse;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;

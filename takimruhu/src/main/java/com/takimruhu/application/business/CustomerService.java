@@ -1,4 +1,4 @@
-package com.takimruhu.business;
+package com.takimruhu.application.business;
 
 import java.util.List;
 import java.util.Optional;

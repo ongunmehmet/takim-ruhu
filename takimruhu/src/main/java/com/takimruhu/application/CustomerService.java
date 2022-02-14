@@ -1,4 +1,4 @@
-package com.takimruhu.service;
+package com.takimruhu.application;
 
 import com.takimruhu.entities.Customer;
 

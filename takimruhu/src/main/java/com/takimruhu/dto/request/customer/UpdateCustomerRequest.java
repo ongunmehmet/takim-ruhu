@@ -1,17 +1,10 @@
-package com.takimruhu.entities;
+package com.takimruhu.dto.request.customer;
 
+import com.takimruhu.entities.Sex;
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class Customer {
-    @Id
-    @Column(name = "customer_ıd", nullable = false)
-    private int customerId;
+public class UpdateCustomerRequest {
     private String name;
     private String surName;
     private String Email;
@@ -25,12 +18,7 @@ public class Customer {
     private String vergiNo;
     private String vergiDairesi;
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public UpdateCustomerRequest() {
     }
 
     public String getName() {
@@ -127,13 +115,5 @@ public class Customer {
 
     public void setVergiDairesi(String vergiDairesi) {
         this.vergiDairesi = vergiDairesi;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", name='" + name + '\'' + ", surName='" + surName + '\'' + ", Email='" + Email + '\'' + ", password='" + password + '\'' + ", sex=" + sex + ", phoneNumber='" + phoneNumber + '\'' + ", isAdmin=" + isAdmin + ", adresses=" + adresses + ", favoredProducts=" + favoredProducts + ", companyName='" + companyName + '\'' + ", vergiNo='" + vergiNo + '\'' + ", vergiDairesi='" + vergiDairesi + '\'' + '}';
-    }
-
-    public Customer() {
     }
 }

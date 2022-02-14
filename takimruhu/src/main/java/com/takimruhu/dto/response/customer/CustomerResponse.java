@@ -1,17 +1,10 @@
-package com.takimruhu.entities;
+package com.takimruhu.dto.response.customer;
 
-import org.hibernate.annotations.Table;
+import com.takimruhu.entities.Sex;
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class Customer {
-    @Id
-    @Column(name = "customer_ıd", nullable = false)
+public class CustomerResponse {
     private int customerId;
     private String name;
     private String surName;
@@ -25,6 +18,50 @@ public class Customer {
     private String companyName;
     private String vergiNo;
     private String vergiDairesi;
+
+    public CustomerResponse() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public Map getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(Map adresses) {
+        this.adresses = adresses;
+    }
+
+    public String getVergiNo() {
+        return vergiNo;
+    }
+
+    public void setVergiNo(String vergiNo) {
+        this.vergiNo = vergiNo;
+    }
+
+    public String getVergiDairesi() {
+        return vergiDairesi;
+    }
+
+    public void setVergiDairesi(String vergiDairesi) {
+        this.vergiDairesi = vergiDairesi;
+    }
+
 
     public int getCustomerId() {
         return customerId;
@@ -58,14 +95,6 @@ public class Customer {
         Email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Sex getSex() {
         return sex;
     }
@@ -82,22 +111,6 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public Map getAdresses() {
-        return adresses;
-    }
-
-    public void setAdresses(Map adresses) {
-        this.adresses = adresses;
-    }
-
     public List getFavoredProducts() {
         return favoredProducts;
     }
@@ -112,29 +125,5 @@ public class Customer {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public String getVergiNo() {
-        return vergiNo;
-    }
-
-    public void setVergiNo(String vergiNo) {
-        this.vergiNo = vergiNo;
-    }
-
-    public String getVergiDairesi() {
-        return vergiDairesi;
-    }
-
-    public void setVergiDairesi(String vergiDairesi) {
-        this.vergiDairesi = vergiDairesi;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", name='" + name + '\'' + ", surName='" + surName + '\'' + ", Email='" + Email + '\'' + ", password='" + password + '\'' + ", sex=" + sex + ", phoneNumber='" + phoneNumber + '\'' + ", isAdmin=" + isAdmin + ", adresses=" + adresses + ", favoredProducts=" + favoredProducts + ", companyName='" + companyName + '\'' + ", vergiNo='" + vergiNo + '\'' + ", vergiDairesi='" + vergiDairesi + '\'' + '}';
-    }
-
-    public Customer() {
     }
 }

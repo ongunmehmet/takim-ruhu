@@ -1,17 +1,10 @@
-package com.takimruhu.entities;
+package com.takimruhu.dto.response.customer;
 
-import org.hibernate.annotations.Table;
+import com.takimruhu.entities.Sex;
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class Customer {
-    @Id
-    @Column(name = "customer_ıd", nullable = false)
+public class AcquireCustomerResponse {
     private int customerId;
     private String name;
     private String surName;
@@ -25,6 +18,9 @@ public class Customer {
     private String companyName;
     private String vergiNo;
     private String vergiDairesi;
+
+    public AcquireCustomerResponse() {
+    }
 
     public int getCustomerId() {
         return customerId;
@@ -128,13 +124,5 @@ public class Customer {
 
     public void setVergiDairesi(String vergiDairesi) {
         this.vergiDairesi = vergiDairesi;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", name='" + name + '\'' + ", surName='" + surName + '\'' + ", Email='" + Email + '\'' + ", password='" + password + '\'' + ", sex=" + sex + ", phoneNumber='" + phoneNumber + '\'' + ", isAdmin=" + isAdmin + ", adresses=" + adresses + ", favoredProducts=" + favoredProducts + ", companyName='" + companyName + '\'' + ", vergiNo='" + vergiNo + '\'' + ", vergiDairesi='" + vergiDairesi + '\'' + '}';
-    }
-
-    public Customer() {
     }
 }

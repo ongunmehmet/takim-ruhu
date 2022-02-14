@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.takimruhu.dto.entities.Customer;
-import com.takimruhu.application.business.CustomerService;
+import com.takimruhu.entities.Customer;
+import com.takimruhu.application.business.StandardCustomerApplication;
 
 @RestController
 @RequestMapping("customers")
 public class CustomerController
 {
-    private CustomerService customerService;
+    private StandardCustomerApplication customerService;
 
-    public CustomerController(CustomerService customerService)
+    public CustomerController(StandardCustomerApplication customerService)
     {
         this.customerService = customerService;
     }

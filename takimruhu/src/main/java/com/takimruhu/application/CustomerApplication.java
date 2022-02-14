@@ -4,7 +4,7 @@ import com.takimruhu.dto.entities.Customer;
 
 import java.util.List;
 
-public interface CustomerService {
+public interface CustomerApplication {
     List<Customer> getAllCustomers();
     Customer saveOneCustomer(Customer newCustomer);
     Customer getOneCustomer(int customerId);

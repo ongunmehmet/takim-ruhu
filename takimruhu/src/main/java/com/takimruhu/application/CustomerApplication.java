@@ -1,6 +1,6 @@
 package com.takimruhu.application;
 
-import com.takimruhu.dto.entities.Customer;
+import com.takimruhu.entities.Customer;
 
 import java.util.List;
 

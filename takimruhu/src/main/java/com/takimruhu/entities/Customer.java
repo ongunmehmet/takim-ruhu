@@ -1,4 +1,4 @@
-package com.takimruhu.dto.entities;
+package com.takimruhu.entities;
 
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;

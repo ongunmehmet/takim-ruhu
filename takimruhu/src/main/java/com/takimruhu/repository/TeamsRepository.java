@@ -1,6 +1,6 @@
 package com.takimruhu.repository;
 
-import com.takimruhu.dto.entities.Teams;
+import com.takimruhu.entities.Teams;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

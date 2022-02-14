@@ -1,6 +1,6 @@
 package com.takimruhu.repository;
 
-import com.takimruhu.dto.entities.Customer;
+import com.takimruhu.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.takimruhu.dto.entities;
+package com.takimruhu.entities;
 
 public enum Sex {
     MALE, FEMALE

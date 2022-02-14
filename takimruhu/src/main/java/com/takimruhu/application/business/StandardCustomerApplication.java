@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CustomerService
+public class StandardCustomerApplication
 {
     CustomerRepository customerRepository;
 
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public StandardCustomerApplication(CustomerRepository customerRepository) {
         super();
         this.customerRepository = customerRepository;
     }

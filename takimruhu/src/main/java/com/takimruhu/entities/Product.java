@@ -18,10 +18,10 @@ public class Product {
 
     private String productName;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="brand_id", nullable=false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Brand brandId;//add relation*/
+    private Brand brandId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="team_id", nullable=false)
@@ -34,6 +34,10 @@ public class Product {
     private int saleRate;
     private int numberOfStock;
     private double price;
+
+    //constructor
+    public Product() {
+    }
 
     public int getProductId() {
         return productId;

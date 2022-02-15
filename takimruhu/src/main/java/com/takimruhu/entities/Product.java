@@ -3,13 +3,10 @@ package com.takimruhu.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -29,7 +26,7 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="team_id", nullable=false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Teams teamId;//add relation
+    private Team teamId;//add relation
 
     private enum size{Small,Medium,Large};
     private boolean onSale;

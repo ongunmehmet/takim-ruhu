@@ -1,6 +1,11 @@
 package com.takimruhu.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Brand {
+    @Id
     private int brandId;
     private String brandName;
 
@@ -14,5 +19,8 @@ public class Brand {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    public Brand() {
     }
 }

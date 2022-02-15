@@ -1,14 +1,22 @@
 package com.takimruhu.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name="Orders")
+@DynamicUpdate
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
-    private long timeStamp;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date timeStamp;
+
     private int productId;
     private double orderAmount;
     private int cargoId;
@@ -27,12 +35,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public long getTimeStamp() {
+    public Date getTimeStamp() {
 
         return timeStamp;
     }
 
-    public void setTimeStamp(long timeStamp) {
+    public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
 

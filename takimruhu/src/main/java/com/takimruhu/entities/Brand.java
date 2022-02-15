@@ -2,6 +2,7 @@ package com.takimruhu.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Brand {

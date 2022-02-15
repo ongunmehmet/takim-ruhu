@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+import java.util.List;
 @Entity
 @Table(name="Products")
 public class Product {

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+import java.util.List;
 @Entity
 @Table(name="Products")
 public class Product {
@@ -28,7 +28,7 @@ public class Product {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Team teamId;//add relation
 
-    private enum size{Small,Medium,Large};
+    private enum size{Small,Medium,Large}
     private boolean onSale;
     private boolean specialProduct;
     private int saleRate;
@@ -41,6 +41,26 @@ public class Product {
 
     public int getProductId() {
         return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public Brand getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Brand brandId) {
+        this.brandId = brandId;
+    }
+
+    public Team getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Team teamId) {
+        this.teamId = teamId;
     }
 
     public String getProductName() {

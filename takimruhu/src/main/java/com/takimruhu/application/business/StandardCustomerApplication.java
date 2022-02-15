@@ -7,8 +7,6 @@ import com.takimruhu.entities.Customer;
 import com.takimruhu.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class StandardCustomerApplication
 {
@@ -55,11 +53,11 @@ public class StandardCustomerApplication
             foundCustomer.setSex(newCustomer.getSex());
             foundCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
             foundCustomer.setAdmin(newCustomer.isAdmin());
-            foundCustomer.setAdresses(newCustomer.getAdresses());
+            foundCustomer.setAddresses(newCustomer.getAddresses());
             foundCustomer.setFavoredProducts(newCustomer.getFavoredProducts());
             foundCustomer.setCompanyName(newCustomer.getCompanyName());
-            foundCustomer.setVergiNo(newCustomer.getVergiNo());
-            foundCustomer.setVergiDairesi(newCustomer.getVergiDairesi());
+            foundCustomer.setTaxNo(newCustomer.getTaxNo());
+            foundCustomer.setTaxDepartment(newCustomer.getTaxDepartment());
 
             return foundCustomer;
 

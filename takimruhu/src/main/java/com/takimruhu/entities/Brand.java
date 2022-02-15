@@ -1,12 +1,15 @@
 package com.takimruhu.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name="Brands")
+@DynamicUpdate
 public class Brand {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int brandId;
     private String brandName;
 

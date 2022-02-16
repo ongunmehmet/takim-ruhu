@@ -8,6 +8,7 @@ import java.util.Objects;
 public class Order {
     @Id
     private int orderId;
+    private int customerId;
     private long timeStamp;
     private int productId;
     private double orderAmount;
@@ -25,6 +26,14 @@ public class Order {
     public void setOrderId(int orderId) {
 
         this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public long getTimeStamp() {

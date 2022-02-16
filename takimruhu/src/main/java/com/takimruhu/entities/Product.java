@@ -1,42 +1,64 @@
 package com.takimruhu.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="Products")
+@DynamicUpdate
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
 
     private String productName;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="brand_id", nullable=false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Brand brandId;//add relation*/
+    private Brand brandId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="team_id", nullable=false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Team teamId;//add relation
 
-    private enum size{Small,Medium,Large};
+    private enum size{Small,Medium,Large}
     private boolean onSale;
     private boolean specialProduct;
     private int saleRate;
     private int numberOfStock;
     private double price;
 
+    //constructor
+    public Product() {
+    }
+
     public int getProductId() {
         return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public Brand getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Brand brandId) {
+        this.brandId = brandId;
+    }
+
+    public Team getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Team teamId) {
+        this.teamId = teamId;
     }
 
     public String getProductName() {
@@ -86,4 +108,6 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
 }

@@ -1,14 +1,18 @@
 package com.takimruhu.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name="Teams")
+@DynamicUpdate
 public class Team {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teamId;
-    private String teamName;
 
+    private String teamName;
 
     public Team() {
     }

@@ -1,12 +1,16 @@
 package com.takimruhu.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name="Seasons")
+@DynamicUpdate
 public class Season {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seasonId;
     private String seasonName;
 

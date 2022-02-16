@@ -1,17 +1,20 @@
 package com.takimruhu.entities;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Customers")
+@DynamicUpdate
 public class Customer {
     @Id
-    @Column(name = "customer_ıd", nullable = false)
+    @Column(name = "customer_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
+
     private String name;
     private String surName;
     private String Email;
@@ -19,11 +22,11 @@ public class Customer {
     private Sex sex;
     private String phoneNumber;
     private boolean isAdmin;
-    private Map adresses;
+    private Map addresses;
     private List favoredProducts;
     private String companyName;
-    private String vergiNo;
-    private String vergiDairesi;
+    private String taxNo;
+    private String taxDepartment;
 
     public int getCustomerId() {
         return customerId;
@@ -89,12 +92,12 @@ public class Customer {
         isAdmin = admin;
     }
 
-    public Map getAdresses() {
-        return adresses;
+    public Map getAddresses() {
+        return addresses;
     }
 
-    public void setAdresses(Map adresses) {
-        this.adresses = adresses;
+    public void setAddresses(Map addresses) {
+        this.addresses = addresses;
     }
 
     public List getFavoredProducts() {
@@ -113,27 +116,41 @@ public class Customer {
         this.companyName = companyName;
     }
 
-    public String getVergiNo() {
-        return vergiNo;
+    public String getTaxNo() {
+        return taxNo;
     }
 
-    public void setVergiNo(String vergiNo) {
-        this.vergiNo = vergiNo;
+    public void setTaxNo(String taxNo) {
+        this.taxNo = taxNo;
     }
 
-    public String getVergiDairesi() {
-        return vergiDairesi;
+    public String getTaxDepartment() {
+        return taxDepartment;
     }
 
-    public void setVergiDairesi(String vergiDairesi) {
-        this.vergiDairesi = vergiDairesi;
+    public void setTaxDepartment(String taxDepartment) {
+        this.taxDepartment = taxDepartment;
+    }
+
+    public Customer() {
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", name='" + name + '\'' + ", surName='" + surName + '\'' + ", Email='" + Email + '\'' + ", password='" + password + '\'' + ", sex=" + sex + ", phoneNumber='" + phoneNumber + '\'' + ", isAdmin=" + isAdmin + ", adresses=" + adresses + ", favoredProducts=" + favoredProducts + ", companyName='" + companyName + '\'' + ", vergiNo='" + vergiNo + '\'' + ", vergiDairesi='" + vergiDairesi + '\'' + '}';
-    }
-
-    public Customer() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", Email='" + Email + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", addresses=" + addresses +
+                ", favoredProducts=" + favoredProducts +
+                ", companyName='" + companyName + '\'' +
+                ", taxNo='" + taxNo + '\'' +
+                ", taxDepartment='" + taxDepartment + '\'' +
+                '}';
     }
 }

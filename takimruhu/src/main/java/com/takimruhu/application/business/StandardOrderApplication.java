@@ -50,7 +50,7 @@ public class StandardOrderApplication implements OrderApplication {
     public UpdateOrderResponse updateOrder(int orderId, UpdateOrderRequest request) {
         var managedOrder = orderRepository.findById(orderId)
                 .orElseThrow(()->new OrderNotFoundException());
-        managedOrder.setTimeStamp(request.getTimeStamp());
+        //managedOrder.setTimeStamp(request.getTimeStamp());
         managedOrder.setProductId(request.getProductId());
         managedOrder.setCargoId(request.getCargoId());
         managedOrder.setAddress(request.getAddress());

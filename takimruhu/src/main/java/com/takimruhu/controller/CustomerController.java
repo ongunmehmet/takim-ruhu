@@ -1,15 +1,15 @@
 package com.takimruhu.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.takimruhu.application.CustomerApplication;
+import com.takimruhu.application.business.exception.CustomerAlreadyExistException;
+import com.takimruhu.dto.request.customer.AcquireCustomerRequest;
+import com.takimruhu.dto.request.customer.UpdateCustomerRequest;
+import com.takimruhu.dto.response.customer.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import com.takimruhu.entities.Customer;
 import com.takimruhu.application.business.StandardCustomerApplication;
@@ -18,40 +18,38 @@ import com.takimruhu.application.business.StandardCustomerApplication;
 @RequestMapping("customers")
 public class CustomerController
 {
-    private StandardCustomerApplication customerService;
+    private CustomerApplication customerApplication;
 
-    public CustomerController(StandardCustomerApplication customerService)
-    {
-        this.customerService = customerService;
+    public CustomerController(CustomerApplication customerApplication) {
+        this.customerApplication = customerApplication;
+        System.err.println(customerApplication.getClass().getName());
     }
 
-    @GetMapping
-    public List<Customer> getAllCustomers()
-    {
-        return customerService.getAllCustomers();
+    // GET /customers/11111111110
+    @GetMapping("{customerId}")
+    public DetailedCustomerResponse getCustomerByIdentity(@PathVariable int customerId) {
+        return customerApplication.findCustomerByIdentity(customerId);
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer newCustomer)
-    {
-        return customerService.saveOneCustomer(newCustomer);
+    public AcquireCustomerResponse acquireCustomer(@RequestBody @Validated AcquireCustomerRequest request) throws CustomerAlreadyExistException {
+        return customerApplication.addCustomer(request);
     }
 
-    @GetMapping("/{customerId}")
-    public Customer getCustomerBycustomerId(@PathVariable int customerId)
-    {
-        return customerService.getOneCustomer(customerId);
+    @PutMapping("{customerId}")
+    public UpdateCustomerResponse updateCustomer(@PathVariable @Validated int customerId,
+                                                 @RequestBody @Validated UpdateCustomerRequest request) {
+        return customerApplication.updateCustomer(customerId, request);
     }
 
-    @PutMapping("/{customerId}")
-    public Customer updateCustomerBycustomerId(@PathVariable int customerId, @RequestBody Customer newCustomer)
-    {
-        return customerService.updateOneCustomer(customerId,newCustomer);
-    }
-    @DeleteMapping("/{customerId}")
-    public void deleteCustomerById(@PathVariable int customerId)
-    {
-        customerService.deleteById(customerId);
+    @PatchMapping("{customerId}")
+    public PatchCustomerResponse patchCustomer(@PathVariable @Validated int customerId,
+                                               @RequestBody Map<String, Object> changes) {
+        return customerApplication.patchCustomer(customerId, changes);
     }
 
+    @DeleteMapping("{customerId}")
+    public DeleteCustomerResponse releaseCustomerByIdentity(@PathVariable int customerId) {
+        return customerApplication.removeCustomerByIdentity(customerId);
+    }
 }

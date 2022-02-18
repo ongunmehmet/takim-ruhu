@@ -13,17 +13,17 @@ import java.util.Map;
 public interface CustomerApplication {
 
 
-    DetailedCustomerResponse findCustomerByIdentity(int identity);
+    DetailedCustomerResponse findCustomerByIdentity(int customerId);
 
     @Transactional
     AcquireCustomerResponse addCustomer(AcquireCustomerRequest request) throws CustomerAlreadyExistException;
 
     @Transactional
-    UpdateCustomerResponse updateCustomer(int identity, UpdateCustomerRequest request);
+    UpdateCustomerResponse updateCustomer(int customerId, UpdateCustomerRequest request);
 
     @Transactional
-    PatchCustomerResponse patchCustomer(int identity, Map<String, Object> request);
+    PatchCustomerResponse patchCustomer(int customerId, Map<String, Object> request);
 
     @Transactional
-    DeleteCustomerResponse removeCustomerByIdentity(int identity);
+    DeleteCustomerResponse removeCustomerByIdentity(int customerId);
 }

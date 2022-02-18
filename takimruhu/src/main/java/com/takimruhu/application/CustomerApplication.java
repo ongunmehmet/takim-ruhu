@@ -11,18 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 public interface CustomerApplication {
-    DetailedCustomerResponse findCustomerByIdentity(String identity);
 
+
+    DetailedCustomerResponse findCustomerByIdentity(int identity);
 
     @Transactional
     AcquireCustomerResponse addCustomer(AcquireCustomerRequest request) throws CustomerAlreadyExistException;
 
     @Transactional
-    UpdateCustomerResponse updateCustomer(String identity, UpdateCustomerRequest request);
+    UpdateCustomerResponse updateCustomer(int identity, UpdateCustomerRequest request);
 
     @Transactional
-    PatchCustomerResponse patchCustomer(String identity, Map<String, Object> request);
+    PatchCustomerResponse patchCustomer(int identity, Map<String, Object> request);
 
     @Transactional
-    DeleteCustomerResponse removeCustomerByIdentity(String identity);
+    DeleteCustomerResponse removeCustomerByIdentity(int identity);
 }

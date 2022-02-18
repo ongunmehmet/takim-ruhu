@@ -23,7 +23,7 @@ public class StandardCustomerApplication implements CustomerApplication
 
 
     @Override
-    public DetailedCustomerResponse findCustomerByIdentity(String identity) {
+    public DetailedCustomerResponse findCustomerByIdentity(int identity) {
         var customer = customerRepository.findById(identity).orElseThrow(() -> new CustomerNotFoundException());
         var detailedCustomerResponse = modelMapper.map(customer, DetailedCustomerResponse.class);
        return detailedCustomerResponse;
@@ -34,7 +34,7 @@ public class StandardCustomerApplication implements CustomerApplication
     @Transactional
     public AcquireCustomerResponse addCustomer(AcquireCustomerRequest request) throws CustomerAlreadyExistException {
         var identity = request.getCustomerId();
-        if (customerRepository.existsById(String.valueOf(identity)))//Neden String.valueof olmadan calısmıyor.
+        if (customerRepository.existsById(identity))
             throw new CustomerAlreadyExistException();
         var customer = modelMapper.map(request, Customer.class);
         return modelMapper.map(customerRepository.save(customer),
@@ -43,7 +43,7 @@ public class StandardCustomerApplication implements CustomerApplication
 
     @Override
     @Transactional
-    public UpdateCustomerResponse updateCustomer(String identity, UpdateCustomerRequest request) {
+    public UpdateCustomerResponse updateCustomer(int identity, UpdateCustomerRequest request) {
         var managedCustomer = customerRepository.findById(identity)
                 .orElseThrow(() -> new CustomerNotFoundException());
         managedCustomer.setName(request.getName());
@@ -66,7 +66,7 @@ public class StandardCustomerApplication implements CustomerApplication
 
     @Override
     @Transactional
-    public PatchCustomerResponse patchCustomer(String identity, Map<String, Object> request) {
+    public PatchCustomerResponse patchCustomer(int identity, Map<String, Object> request) {
         var managedCustomer = customerRepository.findById(identity)
                 .orElseThrow(() -> new CustomerNotFoundException());
         for (var entry : request.entrySet()) {
@@ -87,7 +87,7 @@ public class StandardCustomerApplication implements CustomerApplication
 
     @Override
     @Transactional
-    public DeleteCustomerResponse removeCustomerByIdentity(String identity) {
+    public DeleteCustomerResponse removeCustomerByIdentity(int identity) {
         var managedCustomer = customerRepository.findById(identity)
                 .orElseThrow(() -> new CustomerNotFoundException());
         customerRepository.delete(managedCustomer);

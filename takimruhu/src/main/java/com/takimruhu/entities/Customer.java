@@ -7,7 +7,7 @@ import org.hibernate.mapping.Map;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Customers")
+@Table(name = "customers")
 @DynamicUpdate
 public class Customer {
     @Id

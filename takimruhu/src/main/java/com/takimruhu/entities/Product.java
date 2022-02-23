@@ -7,7 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name="Products")
+@Table(name="products")
 @DynamicUpdate
 public class Product {
     @Id

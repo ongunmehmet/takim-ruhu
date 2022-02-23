@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name="Orders")
+@Table(name="orders")
 @DynamicUpdate
 public class Order {
     @Id

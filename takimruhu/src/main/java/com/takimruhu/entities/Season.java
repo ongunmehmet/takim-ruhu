@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="Seasons")
+@Table(name="seasons")
 @DynamicUpdate
 public class Season {
     @Id

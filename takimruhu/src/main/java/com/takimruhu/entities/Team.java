@@ -5,7 +5,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Teams")
+@Table(name="teams")
 @DynamicUpdate
 public class Team {
     @Id

@@ -26,4 +26,6 @@ public interface CustomerApplication {
 
     @Transactional
     DeleteCustomerResponse removeCustomerByIdentity(int customerId);
+
+    void initRolesAndUser();
 }

@@ -5,6 +5,7 @@ import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -27,6 +28,20 @@ public class Customer {
     private String companyName;
     private String taxNo;
     private String taxDepartment;
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name="USER_ROLE",
+            joinColumns = {@JoinColumn (name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name= "ROLE_ID")})
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public int getCustomerId() {
         return customerId;

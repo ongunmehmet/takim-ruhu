@@ -25,6 +25,11 @@ public class CustomerController
         System.err.println(customerApplication.getClass().getName());
     }
 
+    public  void initRolesAndUsers(){
+        customerApplication.initRolesAndUser();
+
+    }
+
     // GET /customers/11111111110
     @GetMapping("{customerId}")
     public DetailedCustomerResponse getCustomerByIdentity(@PathVariable int customerId) {

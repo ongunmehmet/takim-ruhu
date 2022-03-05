@@ -4,13 +4,11 @@ import com.takimruhu.application.business.StandartJwtApplication;
 import com.takimruhu.dto.request.jwt.JwtRequest;
 import com.takimruhu.dto.response.jwt.JwtResponse;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/login")
 public class JwtController {
 
     private StandartJwtApplication standartJwtApplication;

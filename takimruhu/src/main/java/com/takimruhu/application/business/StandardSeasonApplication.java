@@ -41,7 +41,7 @@ public class StandardSeasonApplication implements SeasonApplication {
     @Override
     @Transactional
     public AcquireSeasonResponse addSeason(AcquireSeasonRequest request) {
-        var identity = request.getId();
+        var identity = request.getSeasonId();
         if (seasonJpaRepository.existsById(Integer.valueOf(identity)))
             throw new SeasonAlreadyExistException();
         var season = modelMapper.map(request, Season.class);

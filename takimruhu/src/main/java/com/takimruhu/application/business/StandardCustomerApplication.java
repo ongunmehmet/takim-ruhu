@@ -8,10 +8,11 @@ import com.takimruhu.dto.request.customer.UpdateCustomerRequest;
 import com.takimruhu.dto.response.customer.*;
 import com.takimruhu.entities.Customer;
 import com.takimruhu.entities.Role;
+import com.takimruhu.entities.Sex;
 import com.takimruhu.repository.CustomerRepository;
 import com.takimruhu.repository.RoleRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,12 +23,17 @@ import java.util.Set;
 @Service
 public class StandardCustomerApplication implements CustomerApplication
 {
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     private ModelMapper modelMapper;
-    @Autowired
     private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
-
+    public StandardCustomerApplication(CustomerRepository customerRepository, ModelMapper modelMapper, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.customerRepository = customerRepository;
+        this.modelMapper = modelMapper;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public DetailedCustomerResponse findCustomerByIdentity(int identity) {
@@ -101,6 +107,12 @@ public class StandardCustomerApplication implements CustomerApplication
         return modelMapper.map(managedCustomer, DeleteCustomerResponse.class);
     }
 
+    @Override
+    public AcquireCustomerResponse findCustomerByEmail(String email) {
+        var customer=customerRepository.findCustomerByEmail(email);
+        return modelMapper.map(customer,AcquireCustomerResponse.class);
+    }
+
     public void initRolesAndUser(){
         Role adminRole =new Role();
         adminRole.setRoleName("Admin");
@@ -115,7 +127,8 @@ public class StandardCustomerApplication implements CustomerApplication
         Customer adminUser = new Customer();
         adminUser.setName("admin");
         adminUser.setEmail("admin@admin.com");
-        adminUser.setPassword("admin@password");
+        adminUser.setPassword(getEncodedPassword("admin@password"));
+        adminUser.setSex(Sex.MALE);
         Set<Role> adminRoles=new HashSet<>();
         adminUser.setRoles(adminRoles);
         adminRoles.add(adminRole);
@@ -123,16 +136,19 @@ public class StandardCustomerApplication implements CustomerApplication
 
         Customer user = new Customer();
         user.setName("admin");
-        user.setEmail("admin@admin.com");
-        user.setPassword("admin@password");
+        user.setEmail("user@user.com");
+        user.setPassword(getEncodedPassword("user@password"));
+        user.setSex(Sex.FEMALE);
         Set<Role> userRoles =new HashSet<>();
-        adminRoles.add(userRole);
+        userRoles .add(userRole);
         user.setRoles(userRoles);
         customerRepository.save(user);
 
     }
 
-
+    public String getEncodedPassword(String password){
+        return  passwordEncoder.encode(password);
+    }
 
 
 }

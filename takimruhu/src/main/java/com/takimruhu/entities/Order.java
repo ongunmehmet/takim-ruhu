@@ -11,6 +11,7 @@ import java.util.Objects;
 @DynamicUpdate
 public class Order {
     @Id
+    @Column(name = "order_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
 

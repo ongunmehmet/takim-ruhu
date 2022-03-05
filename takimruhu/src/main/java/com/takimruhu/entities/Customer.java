@@ -18,6 +18,7 @@ public class Customer {
 
     private String name;
     private String surName;
+    @Column(name="email",unique = true,nullable = false)
     private String Email;
     private String password;
     private Sex sex;
@@ -28,6 +29,7 @@ public class Customer {
     private String companyName;
     private String taxNo;
     private String taxDepartment;
+
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name="USER_ROLE",

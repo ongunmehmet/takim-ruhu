@@ -10,6 +10,7 @@ import java.util.Objects;
 @DynamicUpdate
 public class Season {
     @Id
+    @Column(name = "season_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seasonId;
     private String seasonName;

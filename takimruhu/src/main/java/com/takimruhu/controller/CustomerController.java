@@ -8,11 +8,17 @@ import com.takimruhu.application.business.exception.CustomerAlreadyExistExceptio
 import com.takimruhu.dto.request.customer.AcquireCustomerRequest;
 import com.takimruhu.dto.request.customer.UpdateCustomerRequest;
 import com.takimruhu.dto.response.customer.*;
+import jdk.jfr.Enabled;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.takimruhu.entities.Customer;
 import com.takimruhu.application.business.StandardCustomerApplication;
+
+import javax.annotation.PostConstruct;
+import javax.persistence.PostLoad;
 
 @RestController
 @RequestMapping("customers")
@@ -22,7 +28,12 @@ public class CustomerController
 
     public CustomerController(CustomerApplication customerApplication) {
         this.customerApplication = customerApplication;
-        System.err.println(customerApplication.getClass().getName());
+
+    }
+    @PostConstruct
+    public  void initRolesAndUsers(){
+        customerApplication.initRolesAndUser();
+
     }
 
     // GET /customers/11111111110

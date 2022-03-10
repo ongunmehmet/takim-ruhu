@@ -26,4 +26,8 @@ public interface CustomerApplication {
 
     @Transactional
     DeleteCustomerResponse removeCustomerByIdentity(int customerId);
+
+    AcquireCustomerResponse findCustomerByEmail (String email);
+
+    void initRolesAndUser();
 }

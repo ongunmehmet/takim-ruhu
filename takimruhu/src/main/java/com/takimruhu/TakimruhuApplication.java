@@ -8,6 +8,7 @@ public class TakimruhuApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TakimruhuApplication.class, args);
+
     }
 
 }

@@ -11,6 +11,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @DynamicUpdate
 public class Product {
     @Id
+    @Column(name = "product_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
 

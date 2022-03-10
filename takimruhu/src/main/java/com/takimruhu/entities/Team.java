@@ -9,6 +9,7 @@ import javax.persistence.*;
 @DynamicUpdate
 public class Team {
     @Id
+    @Column(name = "team_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teamId;
 

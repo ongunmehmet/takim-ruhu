@@ -5,19 +5,21 @@ import org.hibernate.mapping.List;
 import org.hibernate.mapping.Map;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
 @DynamicUpdate
 public class Customer {
     @Id
-    @Column(name = "customer_id", nullable = false)
+    @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
 
     private String name;
     private String surName;
-    private String Email;
+    @Column(name="email",unique = true)
+    private String email;
     private String password;
     private Sex sex;
     private String phoneNumber;
@@ -27,6 +29,21 @@ public class Customer {
     private String companyName;
     private String taxNo;
     private String taxDepartment;
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name="USER_ROLE",
+            joinColumns = {@JoinColumn (name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name= "ROLE_ID")})
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public int getCustomerId() {
         return customerId;
@@ -53,11 +70,11 @@ public class Customer {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public String getPassword() {
@@ -141,7 +158,7 @@ public class Customer {
                 "customerId=" + customerId +
                 ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
-                ", Email='" + Email + '\'' +
+                ", Email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", sex=" + sex +
                 ", phoneNumber='" + phoneNumber + '\'' +

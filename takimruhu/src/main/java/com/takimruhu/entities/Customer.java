@@ -12,14 +12,14 @@ import java.util.Set;
 @DynamicUpdate
 public class Customer {
     @Id
-    @Column(name = "customer_id", nullable = false)
+    @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
 
     private String name;
     private String surName;
-    @Column(name="email",unique = true,nullable = false)
-    private String Email;
+    @Column(name="email",unique = true)
+    private String email;
     private String password;
     private Sex sex;
     private String phoneNumber;
@@ -70,11 +70,11 @@ public class Customer {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public String getPassword() {
@@ -158,7 +158,7 @@ public class Customer {
                 "customerId=" + customerId +
                 ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
-                ", Email='" + Email + '\'' +
+                ", Email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", sex=" + sex +
                 ", phoneNumber='" + phoneNumber + '\'' +

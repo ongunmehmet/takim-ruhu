@@ -109,7 +109,7 @@ public class StandardCustomerApplication implements CustomerApplication
 
     @Override
     public AcquireCustomerResponse findCustomerByEmail(String email) {
-        var customer=customerRepository.findCustomerByEmail(email);
+        var customer=customerRepository.findByEmail(email);
         return modelMapper.map(customer,AcquireCustomerResponse.class);
     }
 
@@ -125,6 +125,7 @@ public class StandardCustomerApplication implements CustomerApplication
         roleRepository.save(userRole);
 
         Customer adminUser = new Customer();
+        adminUser.setCustomerId(1);
         adminUser.setName("admin");
         adminUser.setEmail("admin@admin.com");
         adminUser.setPassword(getEncodedPassword("admin@password"));
@@ -135,6 +136,7 @@ public class StandardCustomerApplication implements CustomerApplication
         customerRepository.save(adminUser);
 
         Customer user = new Customer();
+        user.setCustomerId(2);
         user.setName("admin");
         user.setEmail("user@user.com");
         user.setPassword(getEncodedPassword("user@password"));

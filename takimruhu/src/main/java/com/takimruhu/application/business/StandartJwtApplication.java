@@ -22,11 +22,11 @@ import java.util.Set;
 
 @Service
 public class StandartJwtApplication implements UserDetailsService {
-
+    @Autowired
     private CustomerRepository customerRepository;
     @Autowired
     private JwtUtil jwtUtil;
-
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
@@ -35,21 +35,16 @@ public class StandartJwtApplication implements UserDetailsService {
         authenticate(userName,userPassword);
     final UserDetails userDetails=loadUserByUsername(userName);
     String newGeneratedToken=jwtUtil.generateToken(userDetails);
-    var user =customerRepository.findCustomerByEmail(userName);
+    var user =customerRepository.findByEmail(userName);
     return new JwtResponse(user,newGeneratedToken);
     }
 
 
-    public StandartJwtApplication(CustomerRepository customerRepository,AuthenticationManager authenticationManager) {
-        this.customerRepository = customerRepository;
-        this.authenticationManager= authenticationManager;
 
-
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-      var user= customerRepository.findCustomerByEmail(email);
+      var user= customerRepository.findByEmail(email);
       if(user!=null) {
           return new User(user.getEmail(), user.getPassword(), getAuthorities(user));
       }else{

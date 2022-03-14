@@ -69,8 +69,8 @@ public class StandardCustomerApplication implements CustomerApplication
         managedCustomer.setAddresses(request.getAdresses());
         managedCustomer.setFavoredProducts(request.getFavoredProducts());
         managedCustomer.setCompanyName(request.getCompanyName());
-        managedCustomer.setTaxNo(request.getVergiNo());
-        managedCustomer.setTaxDepartment(request.getVergiDairesi());
+        managedCustomer.setTaxNo(request.getTaxNo());
+        managedCustomer.setTaxDepartment(request.getTaxDepartment());
 
         customerRepository.save(managedCustomer);
         var updateCustomerResponse = modelMapper.map(managedCustomer, UpdateCustomerResponse.class);

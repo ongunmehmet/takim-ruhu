@@ -15,8 +15,24 @@ public class UpdateCustomerRequest {
     private Map adresses;
     private List favoredProducts;
     private String companyName;
-    private String vergiNo;
-    private String vergiDairesi;
+    private String taxNo;
+    private String taxDepartment;
+
+    public String getTaxNo() {
+        return taxNo;
+    }
+
+    public void setTaxNo(String taxNo) {
+        this.taxNo = taxNo;
+    }
+
+    public String getTaxDepartment() {
+        return taxDepartment;
+    }
+
+    public void setTaxDepartment(String taxDepartment) {
+        this.taxDepartment = taxDepartment;
+    }
 
     public UpdateCustomerRequest() {
     }
@@ -101,19 +117,21 @@ public class UpdateCustomerRequest {
         this.companyName = companyName;
     }
 
-    public String getVergiNo() {
-        return vergiNo;
-    }
-
-    public void setVergiNo(String vergiNo) {
-        this.vergiNo = vergiNo;
-    }
-
-    public String getVergiDairesi() {
-        return vergiDairesi;
-    }
-
-    public void setVergiDairesi(String vergiDairesi) {
-        this.vergiDairesi = vergiDairesi;
+    @Override
+    public String toString() {
+        return "UpdateCustomerRequest{" +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", Email='" + Email + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", adresses=" + adresses +
+                ", favoredProducts=" + favoredProducts +
+                ", companyName='" + companyName + '\'' +
+                ", taxNo='" + taxNo + '\'' +
+                ", taxDepartment='" + taxDepartment + '\'' +
+                '}';
     }
 }
